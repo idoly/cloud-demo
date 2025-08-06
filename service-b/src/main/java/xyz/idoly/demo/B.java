@@ -50,13 +50,14 @@ public class B {
 		SpringApplication.run(B.class, args);
 	}
 
+	// https://docs.spring.io/spring-cloud-commons/reference/spring-cloud-commons/common-abstractions.html#rest-client-loadbalancer-client
 	@Configuration
 	public class RestClientConfig {
 		
 		@LoadBalanced
 		@Bean
-		public RestClient.Builder restClientBuilder(RestClientBuilderConfigurer restClientBuilderConfigurer) {
-			return restClientBuilderConfigurer.configure(RestClient.builder());
+		public RestClient.Builder restClientBuilder(RestClientBuilderConfigurer configurer) {
+			return configurer.configure(RestClient.builder());
 		}
 
 		@Bean
