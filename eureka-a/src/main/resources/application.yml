@@ -1,0 +1,43 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-a
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  # https://docs.spring.io/spring-cloud-config/reference/server.html
+  profiles:
+    active: composite
+  cloud:
+    config:
+      server: 
+        prefix: /config
+        bootstrap: true
+        monitor:
+          fixedDelay: 3000
+        composite:
+          - type: native
+            search-locations: file:\\D:\workspace\java\cloud-demo\config-repo
+
+# https://docs.spring.io/spring-cloud-netflix/reference/configprops.html
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: true
+
+# https://docs.spring.io/spring-cloud-bus/reference/quickstart.html
+# management:
+#   endpoints:
+#     web:
+#       exposure:
+#         include: busrefresh,busshutdown,busenv
