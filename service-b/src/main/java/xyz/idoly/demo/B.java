@@ -51,7 +51,7 @@ public class B {
 	}
 
 	@Configuration
-	public class restClientBuilderConfig {
+	public class RestClientConfig {
 		
 		@LoadBalanced
 		@Bean
