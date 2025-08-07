@@ -21,7 +21,7 @@ spring:
           fixedDelay: 3000
         composite:
           - type: native
-            search-locations: file:\\D:\workspace\java\cloud-demo\config-repo
+            search-locations: file:///${user.dir}/config-repo
 
 # https://docs.spring.io/spring-cloud-netflix/reference/configprops.html
 eureka:
